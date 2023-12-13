@@ -10,6 +10,3 @@ FetchContent_Declare(
 )
 
 FetchContent_MakeAvailable(googletest)
-
-add_executable(Tests tests.cc)
-target_link_libraries(Tests PUBLIC GTest::gtest_main Graph)
