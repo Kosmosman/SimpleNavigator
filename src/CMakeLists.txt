@@ -6,3 +6,5 @@ add_subdirectory(algorithms)
 add_subdirectory(includes)
 add_subdirectory(loader)
 add_subdirectory(tests)
+
+target_include_directories(Tests PUBLIC loader)
