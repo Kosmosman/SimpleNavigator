@@ -9,17 +9,22 @@
 #include <vector>
 
 namespace s21 {
+using matrix_t = std::vector<std::vector<u_int>>;
 
-    class Graph {
-    public:
-        Graph()=default;
-        void LoadGraphFromFile(std::string filename);
-        void ExportGraphToDot(std::string filename);
+class Graph {
+ public:
+  Graph() = default;
 
-    private:
-        std::vector<std::vector<int>> matrix_{};
-    };
+  const matrix_t& GetMatrix() const { return matrix_; }
+  void SetMatrix(const matrix_t& matrix) { matrix_ = matrix; }
 
-} // s21
+  void LoadGraphFromFile(const std::string& filename);
+  void ExportGraphToDot(const std::string& filename);
 
-#endif //SIMPLENAVIGATOR_GRAPH_H
+ private:
+  matrix_t matrix_{};
+};
+
+}  // namespace s21
+
+#endif  // SIMPLENAVIGATOR_GRAPH_H
