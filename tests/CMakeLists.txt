@@ -1,3 +1,5 @@
+cmake_minimum_required(VERSION 3.11)
+
 # include(FetchContent)
 
 # FetchContent_Declare(
@@ -13,12 +15,9 @@ enable_testing()
 
 add_executable(tests src/main.cc)
 
-target_link_libraries(tests PRIVATE Graph)
-
 find_package(GTest REQUIRED)
-target_link_libraries(tests PRIVATE GTest::gtest_main)
+target_link_libraries(tests PRIVATE s21_graph GTest::gtest_main)
 
 file(COPY res DESTINATION ${CMAKE_BINARY_DIR})
 
-include(GoogleTest)
-gtest_discover_tests(tests)
+add_test(NAME tests COMMAND tests)

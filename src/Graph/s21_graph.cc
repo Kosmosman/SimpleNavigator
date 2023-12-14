@@ -2,7 +2,7 @@
 // Created by joaquind on 13.12.23.
 //
 
-#include <Graph/Graph.h>
+#include "s21_graph.h"
 
 #include <fstream>
 #include <sstream>
@@ -19,7 +19,7 @@ void Graph::LoadGraphFromFile(const std::string& filename) {
   int size = 0;
   file >> size;
 
-  adjMatrix_.resize(size, std::vector<u_int>(size));
+  adjMatrix_.resize(size, std::vector<int>(size));
 
   for (int i = 0; i < size; ++i) {
     for (int j = 0; j < size; ++j) {

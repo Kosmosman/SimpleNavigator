@@ -2,15 +2,15 @@
 // Created by joaquind on 13.12.23.
 //
 
-#ifndef GRAPH_GRAPH_H_
-#define GRAPH_GRAPH_H_
+#ifndef GRAPH_S21_GRAPH_H_
+#define GRAPH_S21_GRAPH_H_
 
 #include <iostream>
 #include <string>
 #include <vector>
 
 namespace s21 {
-using matrix_t = std::vector<std::vector<u_int>>;
+using matrix_t = std::vector<std::vector<int>>;
 
 class Graph {
  public:
@@ -37,4 +37,4 @@ class Graph {
 
 }  // namespace s21
 
-#endif  // GRAPH_GRAPH_H_
+#endif  // GRAPH_S21_GRAPH_H_
