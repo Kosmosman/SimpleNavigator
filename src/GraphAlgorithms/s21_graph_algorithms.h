@@ -18,16 +18,14 @@ struct TsmResult {
 
 class GraphAlgorithms {
  public:
-  virtual ~GraphAlgorithms() = default;
+  static std::vector<int> DepthFirstSearch(Graph &graph, int start_vertex);
+  static std::vector<int> BreadthFirstSearch(Graph &graph, int start_vertex);
 
-  std::vector<int> DepthFirstSearch(Graph &graph, int start_vertex);
+  static size_t GetShortestPathBetweenVertices(Graph &graph, int vertex1, int vertex2);
+  static matrix_t GetShortestPathsBetweenAllVertices(Graph &graph);
 
-  std::vector<int> BreadthFirstSearch(Graph &graph, int start_vertex);
-  int GetShortestPathBetweenVertices(Graph &graph, int vertex1, int vertex2);
-  matrix_t GetShortestPathsBetweenAllVertices(Graph &graph);
-
-  matrix_t GetLeastSpanningTree(Graph &graph);
-  TsmResult SolveTravelingSalesmanProblem(Graph &graph);
+  static matrix_t GetLeastSpanningTree(Graph &graph);
+  static TsmResult SolveTravelingSalesmanProblem(Graph &graph);
 };
 
 }  // namespace s21
