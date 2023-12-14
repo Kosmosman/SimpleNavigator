@@ -1,3 +1,3 @@
-add_library(Graph STATIC include/Graph/Graph.h src/Graph.cc)
+add_library(s21_graph STATIC s21_graph.h s21_graph.cc)
 
-target_include_directories(Graph PUBLIC include)
+target_include_directories(s21_graph PUBLIC ./)

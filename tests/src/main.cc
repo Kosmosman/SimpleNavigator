@@ -1,8 +1,9 @@
-#include <Graph/Graph.h>
 #include <gtest/gtest.h>
 
 #include <fstream>
 #include <sstream>
+
+#include "s21_graph.h"
 
 TEST(GraphTest, LoadGraphFromFileTest) {
   s21::Graph graph;
