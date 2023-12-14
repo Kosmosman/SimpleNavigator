@@ -19,11 +19,11 @@ void Graph::LoadGraphFromFile(const std::string& filename) {
   int size = 0;
   file >> size;
 
-  matrix_.resize(size, std::vector<u_int>(size));
+  adjMatrix_.resize(size, std::vector<u_int>(size));
 
   for (int i = 0; i < size; ++i) {
     for (int j = 0; j < size; ++j) {
-      file >> matrix_[i][j];
+      file >> adjMatrix_[i][j];
     }
   }
 
@@ -31,24 +31,36 @@ void Graph::LoadGraphFromFile(const std::string& filename) {
 }
 
 void Graph::ExportGraphToDot(const std::string& filename) {
-  std::ofstream file(filename);
+  std::ofstream dotFile(filename);
 
-  if (!file.is_open()) {
+  if (!dotFile.is_open()) {
     throw std::runtime_error("Could not open file");
   }
 
-  file << "graph {\n";
+  size_t size = GetSize();
 
-  for (size_t i = 0; i < matrix_.size(); ++i) {
-    for (size_t j = 0; j < matrix_.size(); ++j) {
-      if (matrix_[i][j] != 0) {
-        file << i << " -- " << j << ";\n";
+  dotFile << "graph {" << std::endl;
+
+  for (size_t i = 0; i < size; ++i) {
+    for (size_t j = 0; j < size; ++j) {
+      if (adjMatrix_[i][j] != 0) {
+        dotFile << i << " -- " << j << ";\n";
       }
     }
   }
 
-  file << "}\n";
+  dotFile << "}" << std::endl;
 
-  file.close();
+  dotFile.close();
+}
+
+void Graph::print() {
+  size_t size = GetSize();
+  for (size_t i = 0; i < size; i++) {
+    for (size_t j = 0; j < size; j++) {
+      std::cout << adjMatrix_[i][j] << " ";
+    }
+    std::cout << std::endl;
+  }
 }
 }  // namespace s21
