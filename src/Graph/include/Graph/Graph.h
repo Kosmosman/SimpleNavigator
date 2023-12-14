@@ -2,8 +2,8 @@
 // Created by joaquind on 13.12.23.
 //
 
-#ifndef SIMPLENAVIGATOR_GRAPH_H
-#define SIMPLENAVIGATOR_GRAPH_H
+#ifndef GRAPH_GRAPH_H_
+#define GRAPH_GRAPH_H_
 
 #include <iostream>
 #include <string>
@@ -37,4 +37,4 @@ class Graph {
 
 }  // namespace s21
 
-#endif  // SIMPLENAVIGATOR_GRAPH_H
+#endif  // GRAPH_GRAPH_H_

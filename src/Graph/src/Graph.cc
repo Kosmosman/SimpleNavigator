@@ -2,7 +2,7 @@
 // Created by joaquind on 13.12.23.
 //
 
-#include "Graph.h"
+#include <Graph/Graph.h>
 
 #include <fstream>
 #include <sstream>

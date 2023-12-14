@@ -1,14 +1,13 @@
+#include <Graph/Graph.h>
 #include <gtest/gtest.h>
 
 #include <fstream>
 #include <sstream>
 
-#include "Graph.h"
-
 TEST(GraphTest, LoadGraphFromFileTest) {
   s21::Graph graph;
 
-  graph.LoadGraphFromFile("3x3.txt");
+  graph.LoadGraphFromFile("../res/3x3.txt");
 
   const auto& matrix = graph.GetMatrix();
   EXPECT_EQ(matrix[0][0], 0);
@@ -27,9 +26,9 @@ TEST(GraphTest, ExportGraphToDotTest) {
 
   graph.SetMatrix({{0, 1, 2}, {3, 4, 5}, {6, 7, 8}});
 
-  graph.ExportGraphToDot("testGraph.dot");
+  graph.ExportGraphToDot("../res/testGraph.dot");
 
-  std::ifstream dotFile("testGraph.dot");
+  std::ifstream dotFile("../res/testGraph.dot");
   std::stringstream dotBuffer;
   dotBuffer << dotFile.rdbuf();
   dotFile.close();
