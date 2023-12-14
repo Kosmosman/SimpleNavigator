@@ -35,8 +35,8 @@ TEST(GraphTest, ExportGraphToDotTest) {
   dotFile.close();
 
   std::string expectedOutput =
-      "graph G {\n 0 -- 1;\n 0 -- 2;\n 1 -- 3;\n 1 -- 4;\n 1 -- 5;\n 2 -- 6;\n "
-      "2 -- 7;\n 2 -- 8;\n}\n";
+      "graph {\n0 -- 1;\n0 -- 2;\n1 -- 3;\n1 -- 4;\n1 -- 5;\n2 -- 6;\n"
+      "2 -- 7;\n2 -- 8;\n}\n";
   EXPECT_EQ(dotBuffer.str(), expectedOutput);
 }
 
