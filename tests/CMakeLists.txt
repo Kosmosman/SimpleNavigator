@@ -14,7 +14,8 @@ cmake_minimum_required(VERSION 3.11)
 enable_testing()
 
 add_executable(tests src/main.cc
-        src/shortest_way_test.cc)
+        src/shortest_way_test.cc
+        src/shortest_way_all_vertexes.cc)
 
 find_package(GTest REQUIRED)
 target_link_libraries(tests PRIVATE s21_graph s21_graph_algorithms GTest::gtest_main)

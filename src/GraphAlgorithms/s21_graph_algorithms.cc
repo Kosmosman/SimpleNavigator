@@ -40,9 +40,23 @@ namespace s21 {
         return distance[vertex2];
     }
 
-// matrix_t GraphAlgorithms::GetShortestPathsBetweenAllVertices(Graph &graph) {
-//   // Implement Floyd-Warshall algorithm here
-// }
+    matrix_t GraphAlgorithms::GetShortestPathsBetweenAllVertices(Graph &graph) {
+        auto vertexes = graph.GetSize();
+        matrix_t path_matrix(graph.GetMatrix());
+        for (int k{}; k < vertexes; ++k) {
+            for (int i{}; i < vertexes; ++i) {
+                    for (int j{}; j < vertexes; ++j) {
+                        if (i == j) continue;
+                        if (path_matrix[i][k] != 0 && path_matrix[k][j] != 0) {
+                            if (!path_matrix[i][j] || path_matrix[i][j] > (path_matrix[i][k] + path_matrix[k][j])) {
+                                path_matrix[i][j] = path_matrix[i][k] + path_matrix[k][j];
+                            }
+                        }
+                }
+            }
+        }
+        return path_matrix;
+    }
 
 // matrix_t GraphAlgorithms::GetLeastSpanningTree(Graph &graph) {
 //   // Implement Prim's algorithm here
