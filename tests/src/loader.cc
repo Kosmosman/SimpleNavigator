@@ -5,8 +5,10 @@
 
 #include "s21_graph.h"
 
+using namespace s21;
+
 TEST(GraphTest, LoadGraphFromFileTest) {
-  s21::Graph graph;
+  Graph graph;
 
   graph.LoadGraphFromFile("../res/3x3.txt");
 
@@ -23,7 +25,7 @@ TEST(GraphTest, LoadGraphFromFileTest) {
 }
 
 TEST(GraphTest, ExportGraphToDotTest) {
-  s21::Graph graph;
+  Graph graph;
 
   graph.SetMatrix({{0, 1, 2}, {3, 4, 5}, {6, 7, 8}});
 
@@ -38,9 +40,4 @@ TEST(GraphTest, ExportGraphToDotTest) {
       "graph {\n0 -- 1;\n0 -- 2;\n1 -- 3;\n1 -- 4;\n1 -- 5;\n2 -- 6;\n"
       "2 -- 7;\n2 -- 8;\n}\n";
   EXPECT_EQ(dotBuffer.str(), expectedOutput);
-}
-
-int main(int argc, char** argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
 }
