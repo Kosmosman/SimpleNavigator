@@ -31,27 +31,22 @@ void Graph::LoadGraphFromFile(const std::string& filename) {
 }
 
 void Graph::ExportGraphToDot(const std::string& filename) {
-  std::ofstream dotFile(filename);
-
-  if (!dotFile.is_open()) {
+  std::ofstream file(filename);
+  if (!file) {
     throw std::runtime_error("Could not open file");
   }
 
-  size_t size = GetSize();
-
-  dotFile << "graph {" << std::endl;
-
-  for (size_t i = 0; i < size; ++i) {
-    for (size_t j = 0; j < size; ++j) {
+  file << "graph {\n";
+  for (int i = 0; i < adjMatrix_.size(); ++i) {
+    for (int j = 0; j < adjMatrix_[i].size(); ++j) {
       if (adjMatrix_[i][j] != 0) {
-        dotFile << i << " -- " << j << ";\n";
+        file << i << " -- " << j << ";\n";
       }
     }
   }
+  file << "}\n";
 
-  dotFile << "}" << std::endl;
-
-  dotFile.close();
+  file.close();
 }
 
 void Graph::print() {

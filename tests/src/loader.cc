@@ -27,7 +27,7 @@ TEST(GraphTest, LoadGraphFromFileTest) {
 TEST(GraphTest, ExportGraphToDotTest) {
   Graph graph;
 
-  graph.SetMatrix({{0, 1, 2}, {3, 4, 5}, {6, 7, 8}});
+  graph.LoadGraphFromFile("../res/4x4.txt");
 
   graph.ExportGraphToDot("../res/testGraph.dot");
 
@@ -37,7 +37,6 @@ TEST(GraphTest, ExportGraphToDotTest) {
   dotFile.close();
 
   std::string expectedOutput =
-      "graph {\n0 -- 1;\n0 -- 2;\n1 -- 3;\n1 -- 4;\n1 -- 5;\n2 -- 6;\n"
-      "2 -- 7;\n2 -- 8;\n}\n";
+      "graph {\n0 -- 1;\n1 -- 0;\n1 -- 2;\n1 -- 3;\n2 -- 1;\n3 -- 1;\n}\n";
   EXPECT_EQ(dotBuffer.str(), expectedOutput);
 }
