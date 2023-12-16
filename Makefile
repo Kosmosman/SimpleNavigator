@@ -45,4 +45,4 @@ clean:
 
 # Test target
 test: all
-	cd $(BUILDDIR) && GTEST_COLOR=1 ctest --verbose
+	cd $(BUILDDIR) && GTEST_COLOR=1 ctest --verbose --output-on-failure

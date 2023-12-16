@@ -21,7 +21,8 @@ class GraphAlgorithms {
   static std::vector<int> DepthFirstSearch(Graph &graph, int start_vertex);
   static std::vector<int> BreadthFirstSearch(Graph &graph, int start_vertex);
 
-  static size_t GetShortestPathBetweenVertices(Graph &graph, int vertex1, int vertex2);
+  static size_t GetShortestPathBetweenVertices(Graph &graph, int vertex1,
+                                               int vertex2);
   static matrix_t GetShortestPathsBetweenAllVertices(Graph &graph);
 
   static matrix_t GetLeastSpanningTree(Graph &graph);
