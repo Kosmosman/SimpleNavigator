@@ -23,11 +23,11 @@ class Graph {
 
   size_t GetSize() { return adjMatrix_.size(); }
 
-  const matrix_t& GetMatrix() const { return adjMatrix_; }
-  void SetMatrix(const matrix_t& matrix) { adjMatrix_ = matrix; }
+  const matrix_t &GetMatrix() const { return adjMatrix_; }
+  void SetMatrix(const matrix_t &matrix) { adjMatrix_ = matrix; }
 
-  void LoadGraphFromFile(const std::string& filename);
-  void ExportGraphToDot(const std::string& filename);
+  void LoadGraphFromFile(const std::string &filename);
+  void ExportGraphToDot(const std::string &filename);
 
   void print();
 

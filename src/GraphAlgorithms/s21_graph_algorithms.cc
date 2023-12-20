@@ -12,6 +12,7 @@
 
 #include "../includes/s21_queue/s21_queue.h"
 #include "../includes/s21_stack/s21_stack.h"
+
 namespace s21 {
 std::vector<int> GraphAlgorithms::DepthFirstSearch(Graph &graph,
                                                    int start_vertex) {
@@ -117,9 +118,51 @@ matrix_t GraphAlgorithms::GetShortestPathsBetweenAllVertices(Graph &graph) {
   return path_matrix;
 }
 
-// matrix_t GraphAlgorithms::GetLeastSpanningTree(Graph &graph) {
-//   // Implement Prim's algorithm here
-// }
+matrix_t GraphAlgorithms::GetLeastSpanningTree(Graph &graph) {
+  auto size{graph.GetSize()};
+  int best_way{INT_MAX};
+  matrix_t result(size, std::vector<int>(size));
+  for (auto i{0}; i < graph.GetSize(); ++i) {
+    std::vector<bool> visited(size);
+    std::vector<int> min_path(size, INT_MAX);
+    std::vector<int> min_path_vertex(size);
+    matrix_t tmp_result(size, std::vector<int>(size));
+    int way{};
+    min_path[i] = 0;
+    min_path_vertex[i] = i;
+
+    for (int j{}; j < size; ++j) {
+      int next_v{-1};
+      for (int k{}; k < size; ++k) {
+        if (!visited[k] && (next_v == -1 || min_path[k] < min_path[next_v]))
+          next_v = k;
+      }
+      if (min_path[next_v] == INT_MAX) return matrix_t{};
+      visited[next_v] = true;
+      way += min_path[next_v];
+      if (way >= best_way) break;
+      tmp_result[min_path_vertex[next_v]][next_v] = min_path[next_v];
+      for (int k{}; k < size; ++k) {
+        if (graph.GetMatrix()[next_v][k] &&
+            graph.GetMatrix()[next_v][k] < min_path[k]) {
+          min_path[k] = graph.GetMatrix()[next_v][k];
+          min_path_vertex[k] = next_v;
+        }
+        if (graph.GetMatrix()[k][next_v] &&
+            graph.GetMatrix()[k][next_v] < min_path[k]) {
+          min_path[k] = graph.GetMatrix()[k][next_v];
+          min_path_vertex[k] = next_v;
+        }
+      }
+    }
+    if (way < best_way) {
+      result = std::move(tmp_result);
+      best_way = way;
+    }
+  }
+  return result;
+}
+
 // TsmResult GraphAlgorithms::SolveTravelingSalesmanProblem(Graph &graph) {
 //   // Implement ant colony algorithm here
 // }
