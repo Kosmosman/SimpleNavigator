@@ -4,6 +4,7 @@
 
 #include "s21_graph_algorithms.h"
 
+#include <algorithm>
 #include <climits>
 #include <iostream>
 #include <map>
@@ -93,7 +94,8 @@ size_t GraphAlgorithms::GetShortestPathBetweenVertices(Graph &graph,
         }
       }
     }
-    if (position.second == vertex2) break;
+    if (position.second == vertex2)
+      break;
     visited[position.second] = true;
   }
   return distance[vertex2];
@@ -105,7 +107,8 @@ matrix_t GraphAlgorithms::GetShortestPathsBetweenAllVertices(Graph &graph) {
   for (int k{}; k < vertexes; ++k) {
     for (int i{}; i < vertexes; ++i) {
       for (int j{}; j < vertexes; ++j) {
-        if (i == j) continue;
+        if (i == j)
+          continue;
         if (path_matrix[i][k] != 0 && path_matrix[k][j] != 0) {
           if (!path_matrix[i][j] ||
               path_matrix[i][j] > (path_matrix[i][k] + path_matrix[k][j])) {
@@ -137,10 +140,12 @@ matrix_t GraphAlgorithms::GetLeastSpanningTree(Graph &graph) {
         if (!visited[k] && (next_v == -1 || min_path[k] < min_path[next_v]))
           next_v = k;
       }
-      if (min_path[next_v] == INT_MAX) return matrix_t{};
+      if (min_path[next_v] == INT_MAX)
+        return matrix_t{};
       visited[next_v] = true;
       way += min_path[next_v];
-      if (way >= best_way) break;
+      if (way >= best_way)
+        break;
       tmp_result[min_path_vertex[next_v]][next_v] = min_path[next_v];
       for (int k{}; k < size; ++k) {
         if (graph.GetMatrix()[next_v][k] &&
@@ -163,7 +168,16 @@ matrix_t GraphAlgorithms::GetLeastSpanningTree(Graph &graph) {
   return result;
 }
 
-// TsmResult GraphAlgorithms::SolveTravelingSalesmanProblem(Graph &graph) {
-//   // Implement ant colony algorithm here
-// }
-}  // namespace s21
+TsmResult GraphAlgorithms::SolveTravelingSalesmanProblem(Graph &graph) {
+  AntCoefficients settings{};
+  std::vector<std::vector<AntPath>> path(graph.GetSize(),
+                                         std::vector<AntPath>(graph.GetSize()));
+  auto len{graph.GetSize()};
+  auto &matrix{graph.GetMatrix()};
+  for (auto i{0}; i < len; ++i) {
+    for (auto j{0}; j < len; ++j) {
+      path[i][j].length = matrix[i][j];
+    }
+  }
+}
+} // namespace s21
