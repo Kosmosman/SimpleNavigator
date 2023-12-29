@@ -13,6 +13,7 @@
 
 #include "../includes/s21_queue/s21_queue.h"
 #include "../includes/s21_stack/s21_stack.h"
+#include "s21_randomizer.h"
 
 namespace s21 {
 std::vector<int> GraphAlgorithms::DepthFirstSearch(Graph &graph,
@@ -169,7 +170,7 @@ matrix_t GraphAlgorithms::GetLeastSpanningTree(Graph &graph) {
 }
 
 TsmResult GraphAlgorithms::SolveTravelingSalesmanProblem(Graph &graph) {
-  AntCoefficients settings{};
+    // Copy path from graph to structure
   std::vector<std::vector<AntPath>> path(graph.GetSize(),
                                          std::vector<AntPath>(graph.GetSize()));
   auto len{graph.GetSize()};
@@ -179,5 +180,33 @@ TsmResult GraphAlgorithms::SolveTravelingSalesmanProblem(Graph &graph) {
       path[i][j].length = matrix[i][j];
     }
   }
+
+    Randomizer r{};
+    AntCoefficients settings{};
+    for (auto i{0}; i < len; ++i) {
+        std::vector<bool> visited(len);
+        std::vector<int> cities_for_visits(len);
+        std::vector<Chance> chance_for_visits;
+        int current_city{i};
+
+        for (auto j{0}; j < len; ++j) {
+            double sum_pheromones_path{};
+            for (auto k{0}; k < len; ++k) {
+                if (!visited[k] && path[current_city][k].length - eps > 0) {
+                    sum_pheromones_path += 1 / pow(path[current_city][k].length, settings.beta) * pow(path[current_city][k].pheromone, settings.alpha);
+                }
+            }
+            chance_for_visits.resize(len - j);
+            for (auto k{0}; k < len; ++k) {
+                if (!visited[k] && path[j][k].length - eps > 0) {
+                    chance_for_visits[k].city = k;
+                    chance_for_visits[k].chance = pow(path[current_city][k].length, settings.beta) * pow(path[current_city][k].pheromone, settings.alpha) / sum_pheromones_path;
+                }
+            }
+            cities_for_visits[j] = r.GetCityNumber(chance_for_visits);
+        }
+    }
+    return {};
 }
+
 } // namespace s21

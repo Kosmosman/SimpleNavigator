@@ -15,6 +15,7 @@ struct Chance {
 };
 
 class Randomizer {
+public:
   Randomizer() : mt_(rd_()){};
   int GetCityNumber(const std::vector<Chance> &chances);
 

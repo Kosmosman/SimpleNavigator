@@ -11,20 +11,27 @@
 
 namespace s21 {
 
+    constexpr double eps{1e-6};
+
 struct TsmResult {
   std::vector<int> vertices;
   double distance;
 };
 
 struct AntPath {
-  double pheromone{};
+  double pheromone{1};
   double length{};
 };
+
+    struct Chance {
+        int city;
+        double chance;
+    };
 
 struct AntCoefficients {
   double alpha{1.};
   double beta{1.};
-  double volatility{};
+  double volatility{0.1};
   double step{0.1};
 };
 
