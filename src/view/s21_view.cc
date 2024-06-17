@@ -1,4 +1,4 @@
-#include "main_view.h"
+#include "s21_view.h"
 
 using namespace s21;
 

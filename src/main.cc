@@ -1,4 +1,4 @@
-#include "main_view.h"
+#include "view/s21_view.h"
 
 int main() {
   s21::MainView main_view;
