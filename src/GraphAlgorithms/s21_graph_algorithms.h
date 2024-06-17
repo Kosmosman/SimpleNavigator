@@ -16,18 +16,31 @@ struct TsmResult {
   double distance;
 };
 
+struct AntPath {
+  double pheromone{};
+  double length{};
+};
+
+struct AntCoefficients {
+  double alpha{1.};
+  double beta{1.};
+  double volatility{};
+  double step{0.1};
+};
+
 class GraphAlgorithms {
- public:
+public:
   static std::vector<int> DepthFirstSearch(Graph &graph, int start_vertex);
   static std::vector<int> BreadthFirstSearch(Graph &graph, int start_vertex);
 
-  static size_t GetShortestPathBetweenVertices(Graph &graph, int vertex1, int vertex2);
+  static size_t GetShortestPathBetweenVertices(Graph &graph, int vertex1,
+                                               int vertex2);
   static matrix_t GetShortestPathsBetweenAllVertices(Graph &graph);
 
   static matrix_t GetLeastSpanningTree(Graph &graph);
   static TsmResult SolveTravelingSalesmanProblem(Graph &graph);
 };
 
-}  // namespace s21
+} // namespace s21
 
-#endif  // GRAPH_S21_GRAPHALGORITHMS_H_
+#endif // GRAPH_S21_GRAPHALGORITHMS_H_
