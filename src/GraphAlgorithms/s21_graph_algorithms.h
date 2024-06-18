@@ -38,7 +38,7 @@ public:
   static matrix_t GetShortestPathsBetweenAllVertices(Graph &graph);
 
   static matrix_t GetLeastSpanningTree(Graph &graph);
-  static TsmResult SolveTravelingSalesmanProblem(Graph &graph);
+  // static TsmResult SolveTravelingSalesmanProblem(Graph &graph);
 };
 
 } // namespace s21

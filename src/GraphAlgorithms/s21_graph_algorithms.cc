@@ -11,8 +11,8 @@
 #include <stack>
 #include <vector>
 
-#include "../includes/s21_queue/s21_queue.h"
-#include "../includes/s21_stack/s21_stack.h"
+#include "../external/s21_queue/s21_queue.h"
+#include "../external/s21_stack/s21_stack.h"
 
 namespace s21 {
 std::vector<int> GraphAlgorithms::DepthFirstSearch(Graph &graph,
@@ -168,16 +168,16 @@ matrix_t GraphAlgorithms::GetLeastSpanningTree(Graph &graph) {
   return result;
 }
 
-TsmResult GraphAlgorithms::SolveTravelingSalesmanProblem(Graph &graph) {
-  AntCoefficients settings{};
-  std::vector<std::vector<AntPath>> path(graph.GetSize(),
-                                         std::vector<AntPath>(graph.GetSize()));
-  auto len{graph.GetSize()};
-  auto &matrix{graph.GetMatrix()};
-  for (auto i{0}; i < len; ++i) {
-    for (auto j{0}; j < len; ++j) {
-      path[i][j].length = matrix[i][j];
-    }
-  }
-}
+// TsmResult GraphAlgorithms::SolveTravelingSalesmanProblem(Graph &graph) {
+//   AntCoefficients settings{};
+//   std::vector<std::vector<AntPath>> path(graph.GetSize(),
+//                                          std::vector<AntPath>(graph.GetSize()));
+//   auto len{graph.GetSize()};
+//   auto &matrix{graph.GetMatrix()};
+//   for (auto i{0}; i < len; ++i) {
+//     for (auto j{0}; j < len; ++j) {
+//       path[i][j].length = matrix[i][j];
+//     }
+//   }
+// }
 } // namespace s21

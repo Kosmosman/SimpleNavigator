@@ -58,4 +58,4 @@ void Graph::print() {
     std::cout << std::endl;
   }
 }
-}  // namespace s21
+} // namespace s21

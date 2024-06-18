@@ -12,7 +12,7 @@ TEST(GraphTest, LoadGraphFromFileTest) {
 
   graph.LoadGraphFromFile("../res/3x3.txt");
 
-  const auto& matrix = graph.GetMatrix();
+  const auto &matrix = graph.GetMatrix();
   EXPECT_EQ(matrix[0][0], 0);
   EXPECT_EQ(matrix[0][1], 1);
   EXPECT_EQ(matrix[0][2], 2);
