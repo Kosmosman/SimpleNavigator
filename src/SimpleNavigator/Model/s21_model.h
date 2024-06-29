@@ -11,7 +11,6 @@ public:
   Model();
   ~Model();
 
-  // Methods to manipulate and retrieve Graph and GraphAlgorithms instances
   Graph &getGraph();
   void setGraph(const Graph &graph);
   GraphAlgorithms &getGraphAlgorithms();

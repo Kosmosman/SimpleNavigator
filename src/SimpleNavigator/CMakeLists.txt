@@ -8,4 +8,4 @@ add_subdirectory(View)
 add_subdirectory(Controller)
 
 add_executable(SimpleNavigator main.cc)
-target_link_libraries(SimpleNavigator s21_model s21_view s21_controller)
+target_link_libraries(SimpleNavigator PRIVATE s21_controller s21_model s21_view)
