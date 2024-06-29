@@ -4,5 +4,8 @@ SET(CMAKE_CXX_STANDARD 17)
 
 enable_testing()
 
-add_subdirectory(src)
+add_subdirectory(src/Graph)
+add_subdirectory(src/external)
+add_subdirectory(src/GraphAlgorithms)
 add_subdirectory(tests)
+add_subdirectory(src/SimpleNavigator)

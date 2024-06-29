@@ -10,6 +10,6 @@ add_library(s21_graph_algorithms STATIC
         s21_graph_algorithms.cc
         s21_randomizer.cc
 )
-target_include_directories(s21_graph_algorithms PUBLIC ./)
+target_include_directories(s21_graph_algorithms PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(s21_graph_algorithms PRIVATE s21_graph Stack Queue)
