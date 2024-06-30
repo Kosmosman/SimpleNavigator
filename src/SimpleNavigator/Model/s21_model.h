@@ -7,7 +7,7 @@
 
 namespace s21 {
 class Model {
-public:
+ public:
   Model();
   ~Model();
 
@@ -15,10 +15,10 @@ public:
   void setGraph(const Graph &graph);
   GraphAlgorithms &getGraphAlgorithms();
 
-private:
+ private:
   Graph _graph;
   GraphAlgorithms _graphAlgorithms;
 };
-} // namespace s21
+}  // namespace s21
 
-#endif // S21_MODEL_H_
+#endif  // S21_MODEL_H_

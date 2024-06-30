@@ -11,4 +11,4 @@ Graph &Model::getGraph() { return _graph; }
 void Model::setGraph(const Graph &graph) { _graph = graph; }
 
 GraphAlgorithms &Model::getGraphAlgorithms() { return _graphAlgorithms; }
-} // namespace s21
+}  // namespace s21

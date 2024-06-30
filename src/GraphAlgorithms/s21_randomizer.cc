@@ -10,9 +10,8 @@ int Randomizer::GetCityNumber(const std::vector<Chance> &chances) {
   double random_num{dist_(mt_)};
   for (const auto &chance : chances) {
     cumulative_chance += chance.chance;
-    if (random_num < cumulative_chance)
-      return chance.city;
+    if (random_num < cumulative_chance) return chance.city;
   }
   return -1;
 }
-} // namespace s21
+}  // namespace s21

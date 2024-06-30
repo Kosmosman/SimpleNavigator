@@ -6,7 +6,7 @@
 
 namespace s21 {
 class View {
-public:
+ public:
   View() = default;
   int show();
   static void displayHelpMessage();
@@ -14,6 +14,6 @@ public:
   static void displaySuccessMessage(const std::string &message);
   static void displayErrorMessage(const std::string &message);
 };
-} // namespace s21
+}  // namespace s21
 
-#endif // A2_SIMPLENAVIGATOR_SRC_VIEW_MAIN_VIEW_H_
+#endif  // A2_SIMPLENAVIGATOR_SRC_VIEW_MAIN_VIEW_H_

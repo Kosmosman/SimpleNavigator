@@ -1,4 +1,5 @@
 #include "s21_controller.h"
+
 #include <cstring>
 #include <fstream>
 #include <string>
@@ -151,4 +152,4 @@ void Controller::handleInput(int argc, char *argv[]) {
     View::displayErrorMessage(std::string("Error loading graph: ") + e.what());
   }
 }
-} // namespace s21
+}  // namespace s21

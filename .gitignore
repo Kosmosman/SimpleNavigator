@@ -2,6 +2,8 @@
 .cache
 *.log
 build
+coverage
+coverage.info
 
 # Prerequisites
 *.d

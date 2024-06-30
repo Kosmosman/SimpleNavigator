@@ -32,4 +32,4 @@ void View::displayErrorMessage(const std::string &message) {
   std::cerr << message << '\n';
 }
 
-} // namespace s21
+}  // namespace s21

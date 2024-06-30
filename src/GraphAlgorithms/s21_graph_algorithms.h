@@ -29,7 +29,7 @@ struct AntCoefficients {
 };
 
 class GraphAlgorithms {
-public:
+ public:
   static std::vector<int> DepthFirstSearch(Graph &graph, int start_vertex);
   static std::vector<int> BreadthFirstSearch(Graph &graph, int start_vertex);
 
@@ -41,6 +41,6 @@ public:
   // static TsmResult SolveTravelingSalesmanProblem(Graph &graph);
 };
 
-} // namespace s21
+}  // namespace s21
 
-#endif // GRAPH_S21_GRAPHALGORITHMS_H_
+#endif  // GRAPH_S21_GRAPHALGORITHMS_H_

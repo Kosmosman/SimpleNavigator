@@ -6,11 +6,11 @@
 
 namespace s21 {
 class Controller {
-public:
+ public:
   Controller(Model &model, View &view);
   void handleInput(int argc, char *argv[]);
 
-private:
+ private:
   Model &_model;
   View &_view;
 
@@ -23,6 +23,6 @@ private:
   void executeAlgorithm(Graph &graph, const std::string &algorithmName,
                         int argc, char *argv[]);
 };
-} // namespace s21
+}  // namespace s21
 
-#endif // A2_SIMPLENAVIGATOR_SRC_CONTROLLER_MAIN_CONTROLLER_H_
+#endif  // A2_SIMPLENAVIGATOR_SRC_CONTROLLER_MAIN_CONTROLLER_H_

@@ -3,7 +3,7 @@
 #include <fstream>
 #include <sstream>
 
-#include "s21_graph.h"
+#include "../../Graph/s21_graph.h"
 
 using namespace s21;
 
