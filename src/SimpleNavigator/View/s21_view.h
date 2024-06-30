@@ -11,6 +11,7 @@ class View {
  public:
   View() = default;
   static void printMatrix(matrix_t graphMatrix);
+  static void printVector(std::vector<int> graphVector);
   static void displayHelpMessage();
   static void displayUsageMessage();
   static void displaySuccessMessage(const std::string &message);

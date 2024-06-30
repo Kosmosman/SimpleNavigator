@@ -4,7 +4,8 @@ namespace s21 {
 
 void View::displayHelpMessage() {
   std::cout << "CLI Application for Graph Algorithms\n";
-  std::cout << "Commands:\n";
+  displayUsageMessage();
+  std::cout << "Type of algorithm:\n";
   std::cout << "- dfs <start_vertex>: Perform Depth-First Search starting from "
                "a given vertex.\n";
   std::cout << "- bfs <start_vertex>: Perform Breadth-First Search starting "
@@ -15,7 +16,6 @@ void View::displayHelpMessage() {
                "vertices.\n";
   std::cout << "- least-spanning-tree: Compute the Least Spanning Tree of the "
                "graph.\n";
-  std::cout << "- tsp: Solve the Traveling Salesman Problem.\n";
   std::cout << "Example:./SimpleNavigator graph_file.txt dfs 0\n";
 }
 
@@ -39,6 +39,13 @@ void View::printMatrix(matrix_t graphMatrix) {
     }
     std::cout << std::endl;
   }
+}
+
+void View::printVector(std::vector<int> graphVector) {
+  for (int v : graphVector) {
+    std::cout << v << " ";
+  }
+  std::cout << std::endl;
 }
 
 }  // namespace s21
