@@ -32,4 +32,13 @@ void View::displayErrorMessage(const std::string &message) {
   std::cerr << message << '\n';
 }
 
+void View::printMatrix(matrix_t graphMatrix) {
+  for (size_t i = 0; i < graphMatrix.size(); i++) {
+    for (size_t j = 0; j < graphMatrix[i].size(); j++) {
+      std::cout << graphMatrix[i][j] << " ";
+    }
+    std::cout << std::endl;
+  }
+}
+
 }  // namespace s21

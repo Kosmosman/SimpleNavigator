@@ -11,8 +11,8 @@ class Controller {
   void handleInput(int argc, char *argv[]);
 
  private:
-  Model &_model;
-  View &_view;
+  Model &model_;
+  View &view_;
 
   void performDfs(Graph graph, int startVertex);
   void performBfs(Graph graph, int startVertex);

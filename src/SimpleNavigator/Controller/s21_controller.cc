@@ -6,12 +6,12 @@
 
 namespace s21 {
 
-Controller::Controller(Model &model, View &view) : _model(model), _view(view) {}
+Controller::Controller(Model &model, View &view) : model_(model), view_(view) {}
 
 void Controller::performDfs(Graph graph, int startVertex) {
   try {
     std::vector<int> result =
-        _model.getGraphAlgorithms().DepthFirstSearch(graph, startVertex);
+        model_.getGraphAlgorithms().DepthFirstSearch(graph, startVertex);
     std::cout << "DFS Result: ";
     for (int v : result) {
       std::cout << v << " ";
@@ -25,7 +25,7 @@ void Controller::performDfs(Graph graph, int startVertex) {
 void Controller::performBfs(Graph graph, int startVertex) {
   try {
     std::vector<int> result =
-        _model.getGraphAlgorithms().BreadthFirstSearch(graph, startVertex);
+        model_.getGraphAlgorithms().BreadthFirstSearch(graph, startVertex);
     std::cout << "BFS Result: ";
     for (int v : result) {
       std::cout << v << " ";
@@ -40,7 +40,7 @@ void Controller::performShortestPath(Graph graph, int firstVertex,
                                      int secondVertex) {
   try {
     size_t pathLength =
-        _model.getGraphAlgorithms().GetShortestPathBetweenVertices(
+        model_.getGraphAlgorithms().GetShortestPathBetweenVertices(
             graph, firstVertex, secondVertex);
     std::cout << "Shortest Path Length: " << pathLength << "\n";
   } catch (const std::exception &e) {
@@ -51,14 +51,9 @@ void Controller::performShortestPath(Graph graph, int firstVertex,
 void Controller::performAllPaths(Graph graph) {
   try {
     matrix_t paths =
-        _model.getGraphAlgorithms().GetShortestPathsBetweenAllVertices(graph);
+        model_.getGraphAlgorithms().GetShortestPathsBetweenAllVertices(graph);
     std::cout << "Shortest Paths Between All Vertices:\n";
-    for (int i = 0; i < paths.size(); ++i) {
-      for (int j = 0; j < paths[i].size(); ++j) {
-        std::cout << paths[i][j] << " ";
-      }
-      std::cout << "\n";
-    }
+    View::printMatrix(paths);
   } catch (const std::exception &e) {
     std::cerr << "Error calculating all paths: " << e.what() << '\n';
   }
@@ -66,14 +61,9 @@ void Controller::performAllPaths(Graph graph) {
 
 void Controller::performLeastSpanningTree(Graph graph) {
   try {
-    matrix_t lst = _model.getGraphAlgorithms().GetLeastSpanningTree(graph);
+    matrix_t lst = model_.getGraphAlgorithms().GetLeastSpanningTree(graph);
     std::cout << "Least Spanning Tree:\n";
-    for (int i = 0; i < lst.size(); ++i) {
-      for (int j = 0; j < lst[i].size(); ++j) {
-        std::cout << lst[i][j] << " ";
-      }
-      std::cout << "\n";
-    }
+    View::printMatrix(lst);
   } catch (const std::exception &e) {
     std::cerr << "Error calculating least spanning tree: " << e.what() << '\n';
   }
@@ -143,10 +133,10 @@ void Controller::handleInput(int argc, char *argv[]) {
   }
 
   try {
-    Graph graph = _model.getGraph();
+    Graph graph = model_.getGraph();
     graph.LoadGraphFromFile(filename);
     View::displaySuccessMessage("Graph loaded successfully.");
-    graph.print();
+    View::printMatrix(graph.GetMatrix());
     executeAlgorithm(graph, algorithmName, argc, argv);
   } catch (const std::exception &e) {
     View::displayErrorMessage(std::string("Error loading graph: ") + e.what());

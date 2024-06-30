@@ -4,11 +4,13 @@
 #include <iostream>
 #include <string>
 
+#include "../../Graph/s21_graph.h"
+
 namespace s21 {
 class View {
  public:
   View() = default;
-  int show();
+  static void printMatrix(matrix_t graphMatrix);
   static void displayHelpMessage();
   static void displayUsageMessage();
   static void displaySuccessMessage(const std::string &message);

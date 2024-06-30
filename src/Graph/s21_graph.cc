@@ -48,13 +48,4 @@ void Graph::ExportGraphToDot(const std::string &filename) {
   file.close();
 }
 
-void Graph::print() {
-  size_t size = GetSize();
-  for (size_t i = 0; i < size; i++) {
-    for (size_t j = 0; j < size; j++) {
-      std::cout << adjMatrix_[i][j] << " ";
-    }
-    std::cout << std::endl;
-  }
-}
 }  // namespace s21
