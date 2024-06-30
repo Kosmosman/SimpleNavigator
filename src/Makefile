@@ -18,16 +18,22 @@ ifeq ($(OS),Darwin)
 	OPEN_CMD = open
 endif
 
-all: $(BUILDDIR)
+all: $(LIBS21_GRAPH).a $(LIBS21_GRAPH_ALGORITHMS).a SimpleNavigator test coverage clang
 	$(MAKE) -C $(BUILDDIR)
 
 $(BUILDDIR):
 	mkdir -p $(BUILDDIR)
 	cd $(BUILDDIR) && $(CMAKE) ..
 
+$(BUILDDIR)/tests: $(LIBS21_GRAPH).a $(LIBS21_GRAPH_ALGORITHMS).a $(BUILDDIR)
+	$(MAKE) -C $(BUILDDIR) tests
+
 $(BUILDDIR)/coverage:
 	mkdir -p $(BUILDDIR)
 	cd $(BUILDDIR) && $(CMAKE) -DENABLE_COVERAGE=ON ..
+
+$(BUILDDIR)/SimpleNavigator: $(LIBS21_GRAPH).a $(LIBS21_GRAPH_ALGORITHMS).a $(BUILDDIR)
+	cd $(BUILDDIR) && $(MAKE) SimpleNavigator
 
 $(LIBS21_GRAPH).a: $(BUILDDIR)
 	cd $(BUILDDIR) && $(MAKE) $(LIBS21_GRAPH)
@@ -38,8 +44,10 @@ $(LIBS21_GRAPH_ALGORITHMS).a: $(BUILDDIR)
 clean:
 	rm -rf $(BUILDDIR) coverage coverage.info
 
-test: all
+test: $(BUILDDIR)/tests
 	cd $(BUILDDIR) && GTEST_COLOR=1 ctest --verbose --output-on-failure
+
+SimpleNavigator: $(BUILDDIR)/SimpleNavigator
 
 coverage: $(BUILDDIR)/coverage
 	$(MAKE) -C $(BUILDDIR)

@@ -8,10 +8,8 @@ file(MAKE_DIRECTORY ${LIB_OUTPUT_DIR})
 
 add_library(s21_graph_algorithms STATIC
         s21_graph_algorithms.h
-        s21_randomizer.h
 
         s21_graph_algorithms.cc
-        s21_randomizer.cc
 )
 
 target_compile_options(s21_graph_algorithms PRIVATE ${COVERAGE_FLAGS})

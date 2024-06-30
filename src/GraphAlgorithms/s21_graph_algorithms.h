@@ -11,23 +11,6 @@
 
 namespace s21 {
 
-struct TsmResult {
-  std::vector<int> vertices;
-  double distance;
-};
-
-struct AntPath {
-  double pheromone{};
-  double length{};
-};
-
-struct AntCoefficients {
-  double alpha{1.};
-  double beta{1.};
-  double volatility{};
-  double step{0.1};
-};
-
 class GraphAlgorithms {
  public:
   static std::vector<int> DepthFirstSearch(Graph &graph, int start_vertex);
@@ -38,7 +21,6 @@ class GraphAlgorithms {
   static matrix_t GetShortestPathsBetweenAllVertices(Graph &graph);
 
   static matrix_t GetLeastSpanningTree(Graph &graph);
-  // static TsmResult SolveTravelingSalesmanProblem(Graph &graph);
 };
 
 }  // namespace s21

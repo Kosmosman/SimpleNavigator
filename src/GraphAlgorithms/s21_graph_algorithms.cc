@@ -162,16 +162,4 @@ matrix_t GraphAlgorithms::GetLeastSpanningTree(Graph &graph) {
   return result;
 }
 
-// TsmResult GraphAlgorithms::SolveTravelingSalesmanProblem(Graph &graph) {
-//   AntCoefficients settings{};
-//   std::vector<std::vector<AntPath>> path(graph.GetSize(),
-//                                          std::vector<AntPath>(graph.GetSize()));
-//   auto len{graph.GetSize()};
-//   auto &matrix{graph.GetMatrix()};
-//   for (auto i{0}; i < len; ++i) {
-//     for (auto j{0}; j < len; ++j) {
-//       path[i][j].length = matrix[i][j];
-//     }
-//   }
-// }
 }  // namespace s21
