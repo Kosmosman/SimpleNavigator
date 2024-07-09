@@ -51,7 +51,7 @@ SimpleNavigator: $(BUILDDIR)/SimpleNavigator
 
 coverage: $(BUILDDIR)/coverage
 	$(MAKE) -C $(BUILDDIR)
-	cd $(BUILDDIR) && GTEST_COLOR=1 ctest --coverage --verbose --output-on-failure
+	cd $(BUILDDIR) && GTEST_COLOR=1 ctest --verbose --output-on-failure
 	lcov -c -d $(BUILDDIR) --output-file coverage.info --ignore-errors inconsistent
 	genhtml coverage.info -o coverage
 	$(OPEN_CMD) ./coverage/index.html
