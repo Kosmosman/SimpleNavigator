@@ -29,8 +29,6 @@ class Graph {
   void LoadGraphFromFile(const std::string &filename);
   void ExportGraphToDot(const std::string &filename);
 
-  void print();
-
  private:
   matrix_t adjMatrix_{};
 };

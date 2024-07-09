@@ -6,18 +6,18 @@ template <typename T>
 class Queue {
  public:
   using value_type = T;
-  using reference = T&;
-  using const_reference = const T&;
+  using reference = T &;
+  using const_reference = const T &;
   using size_type = size_t;
 
   Queue();
-  Queue(std::initializer_list<value_type> const& items);
-  Queue(const Queue& q);
-  Queue(Queue&& q) noexcept;
+  Queue(std::initializer_list<value_type> const &items);
+  Queue(const Queue &q);
+  Queue(Queue &&q) noexcept;
   ~Queue();
 
-  Queue<T>& operator=(const Queue& q);
-  Queue<T>& operator=(Queue&& q) noexcept;
+  Queue<T> &operator=(const Queue &q);
+  Queue<T> &operator=(Queue &&q) noexcept;
 
   reference front();
   const_reference front() const;
@@ -27,20 +27,20 @@ class Queue {
   size_type size();
   void push(const_reference value);
   void pop();
-  void swap(Queue& other);
+  void swap(Queue &other);
   void clear();
 
   template <class... Args>
-  void emplace_back(Args&&... args);
+  void emplace_back(Args &&...args);
 
  private:
   struct Node {
     value_type value;
-    Node* next;
+    Node *next;
   };
 
-  Node* first_;
-  Node* last_;
+  Node *first_;
+  Node *last_;
   size_type size_;
 };
 };  // namespace s21

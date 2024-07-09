@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "s21_graph_algorithms.h"
+#include "../../GraphAlgorithms/s21_graph_algorithms.h"
 
 using namespace s21;
 
@@ -38,7 +38,7 @@ TEST(BreadthFirstSearch, BFITestMatrix3x3) {
       t.tests["Matrix 3x3"].input_graph, 0)};
   EXPECT_EQ(res, t.tests["Matrix 3x3"].expected_result)
       << "Wrong answer in test \"Matrix 3x3\".";
-}
+};
 
 TEST(BreadthFirstSearch, BFITestMatrix5x5) {
   TestcasesBFS t;
@@ -46,7 +46,7 @@ TEST(BreadthFirstSearch, BFITestMatrix5x5) {
       t.tests["Matrix 5x5"].input_graph, 0)};
   EXPECT_EQ(res, t.tests["Matrix 5x5"].expected_result)
       << "Wrong answer in test \"Matrix 5x5\".";
-}
+};
 
 TEST(BreadthFirstSearch, BFITestMatrix10x10) {
   TestcasesBFS t;
@@ -54,4 +54,4 @@ TEST(BreadthFirstSearch, BFITestMatrix10x10) {
       t.tests["Matrix 10x10"].input_graph, 0)};
   EXPECT_EQ(res, t.tests["Matrix 10x10"].expected_result)
       << "Wrong answer in test \"Matrix 10x10\".";
-}
+};

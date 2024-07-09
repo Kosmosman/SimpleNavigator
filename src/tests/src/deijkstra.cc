@@ -5,7 +5,7 @@
 
 #include <unordered_map>
 
-#include "s21_graph_algorithms.h"
+#include "../../GraphAlgorithms/s21_graph_algorithms.h"
 
 using namespace s21;
 
@@ -45,8 +45,8 @@ TEST(ShortestWay, DeijkstraAlgoTest3x3) {
     auto res{GraphAlgorithms::GetShortestPathBetweenVertices(
         tk.g3, testcase.input.first, testcase.input.second)};
     EXPECT_EQ(res, testcase.want) << "Wrong answer in test \"" << test_name;
-  }
-}
+  };
+};
 
 TEST(ShortestWay, DeijkstraAlgoTest10x10) {
   Testcases tk;
@@ -54,5 +54,5 @@ TEST(ShortestWay, DeijkstraAlgoTest10x10) {
     auto res{GraphAlgorithms::GetShortestPathBetweenVertices(
         tk.g10, testcase.input.first, testcase.input.second)};
     EXPECT_EQ(res, testcase.want) << "Wrong answer in test \"" << test_name;
-  }
-}
+  };
+};
